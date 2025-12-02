@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Green / Red Flag Personality Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts API -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-light">
+
+  <!-- INTRO OVERLAY -->
+  <div id="intro-overlay">
+    <div class="intro-bg-layer intro-bg-01"></div>
+    <div class="intro-bg-layer intro-bg-02"></div>
+    <div class="intro-content">
+      <div class="intro-visual">
+        <!-- ภาพประกอบ hero จากแหล่งฟรี -->
+        <img
+          src="https://i.pinimg.com/1200x/76/ad/39/76ad3926d078b66289387502efb3f6d3.jpg"
+          alt="friend talking"
+          class="intro-hero-img"
+        />
+      </div>
+      <div class="intro-text-block">
+        <div class="intro-logo-row">
+          <div class="intro-logo-dot"></div>
+          <div class="intro-logo-text">Relationship Pattern Lab</div>
+        </div>
+        <h1 class="intro-title">
+          แบบทดสอบ Green / Red Flag
+        </h1>
+        <p class="intro-subtitle">
+          ทดลองมองตัวเองผ่านเลนส์ความสัมพันธ์สั้นๆ ก่อนเริ่มแบบทดสอบจริง  
+          ไม่มีคะแนนดีหรือแย่ มีแค่สิ่งที่คุณจะได้รู้จักตัวเองมากขึ้น
+        </p>
+        <button id="intro-enter-btn" class="primary-btn intro-btn">
+          เริ่มเข้าเว็บ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- THEME TOGGLE (มุมขวาบนตลอดเว็บ) -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <img
+        src="https://images.pexels.com/photos/15578754/pexels-photo-15578754.jpeg?auto=compress&cs=tinysrgb&w=800"
+        alt="minimal line art"
+        class="top-logo-img"
+      />
+      <span class="top-bar-title">Green / Red Flag Test</span>
+    </div>
+    <div class="top-bar-right">
+      <button id="theme-toggle-btn" class="theme-toggle-btn">
+        โหมดสว่าง / มืด
+      </button>
+    </div>
+  </header>
+
+  <!-- LANDING SECTION -->
+  <section id="landing-section" class="page-section">
+    <div class="landing-grid">
+      <div class="landing-left">
+        <h1 class="app-title">คุณถือธงสีไหนในความสัมพันธ์ตอนนี้</h1>
+        <p class="app-subtitle">
+          แบบทดสอบแบบสั้นที่ออกแบบมาเพื่อสะท้อนลักษณะการสื่อสาร  
+          การตั้งขอบเขต และการดูแลตัวเองของคุณในความสัมพันธ์  
+          ผลลัพธ์จะแสดงเป็นระดับ Green, Yellow, Red หรือเกิน Red Flag
+        </p>
+        <button id="start-btn" class="primary-btn">
+          เริ่มทำแบบทดสอบ
+        </button>
+      </div>
+      <div class="landing-right">
+        <!-- ภาพประกอบหลายแหล่ง -->
+        <div class="landing-image-main">
+          <img
+            src="https://images.pexels.com/photos/7974877/pexels-photo-7974877.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="people talking"
+          />
+        </div>
+        <div class="landing-image-secondary">
+          <img
+            src="https://images.pexels.com/photos/6146920/pexels-photo-6146920.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="hand holding coffee"
+          />
+          <img
+            src="https://images.pexels.com/photos/4559953/pexels-photo-4559953.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="notebook and laptop"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ SECTION -->
+  <section id="quiz-section" class="page-section" style="display: none;">
+    <div class="quiz-layout">
+      <aside class="quiz-aside">
+        <div class="quiz-aside-card">
+          <img
+            src="https://images.pexels.com/photos/6835875/pexels-photo-6835875.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="note and phone"
+            class="quiz-aside-img"
+          />
+          <p class="quiz-aside-text">
+            ตอบแต่ละข้อแบบซื่อสัตย์กับตัวเอง  
+            ไม่มีคำตอบที่ถูกสำหรับทุกคน มีแค่คำตอบที่ตรงกับคุณที่สุดตอนนี้
+          </p>
+        </div>
+      </aside>
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <div class="quiz-step">
+            ข้อที่ <span id="current-question">1</span>
+            /
+            <span id="total-questions">15</span>
+          </div>
+          <div class="quiz-progress-wrapper">
+            <div class="quiz-progress-bar">
+              <div id="quiz-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <div id="question-text" class="question-text"></div>
+          <div id="choices-container" class="choices-container">
+            <!-- ปุ่มตัวเลือกสร้างด้วย JS -->
+          </div>
+
+          <!-- ปุ่มเลื่อนข้อคำถาม -->
+          <div class="quiz-nav-buttons">
+            <button id="prev-question-btn" class="secondary-btn">
+              ก่อนหน้า
+            </button>
+            <button id="next-question-btn" class="secondary-btn">
+              ถัดไป
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT SECTION -->
+  <section id="result-section" class="page-section" style="display: none;">
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-header">
+          <h2 id="flag-title" class="result-title"></h2>
+          <p id="flag-desc" class="result-desc"></p>
+        </div>
+
+        <div class="result-scores">
+          <div class="score-box score-green">
+            <div class="score-label">Green score</div>
+            <div class="score-value" id="green-score"></div>
+          </div>
+          <div class="score-box score-red">
+            <div class="score-label">Red score</div>
+            <div class="score-value" id="red-score"></div>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-header">ประโยคนี้สะท้อนตัวคุณได้ใกล้ที่สุดตอนนี้</div>
+          <div class="quote-text" id="quote-text"></div>
+        </div>
+
+        <div class="result-actions">
+          <button id="download-story-btn" class="primary-btn">
+            บันทึกภาพสำหรับ IG Story
+          </button>
+          <button id="share-btn" class="secondary-btn">
+            แชร์ผลลัพธ์ผ่านระบบของเครื่อง
+          </button>
+          <button id="retry-btn" class="text-btn">
+            ทำแบบทดสอบใหม่อีกรอบ
+          </button>
+        </div>
+      </div>
+
+      <aside class="result-aside">
+        <div class="result-aside-card">
+          <img
+            src="https://images.pexels.com/photos/3791669/pexels-photo-3791669.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="journal writing"
+            class="result-aside-img"
+          />
+          <p class="result-aside-text">
+            คุณสามารถบันทึกผลลัพธ์เก็บไว้เป็นภาพ หรือใช้เป็นจุดเริ่มต้นในการพูดคุยกับตัวเอง  
+            หรือคนที่อยู่ในความสัมพันธ์จริงๆ
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- STORY TEMPLATE (ซ่อนนอกจอไว้สำหรับทำภาพ) -->
+    <div id="story-capture-wrapper">
+      <div id="story-capture">
+        <div class="story-inner">
+          <div class="story-header">
+            <span class="story-badge">Green / Red Flag Test</span>
+            <span class="story-url">yourdomain.com</span>
+          </div>
+
+          <div class="story-main-flag">
+            <div class="story-flag-label" id="story-flag-label">
+              RESULT LEVEL
+            </div>
+            <div class="story-flag-sub" id="story-flag-sub">
+              สรุประดับธงในความสัมพันธ์ของคุณ
+            </div>
+          </div>
+
+          <!-- รูปหลักสำหรับหน้า Story (สุ่มตามธง) -->
+          <div class="story-main-image-wrapper">
+            <img
+              id="story-main-img"
+              src="https://images.pexels.com/photos/3791669/pexels-photo-3791669.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="story main visual"
+              class="story-main-img"
+            />
+          </div>
+
+          <div class="story-score-row">
+            <div class="story-score-box">
+              <div class="story-score-label">Green score</div>
+              <div class="story-score-value" id="story-green-score">0</div>
+            </div>
+            <div class="story-score-box">
+              <div class="story-score-label">Red score</div>
+              <div class="story-score-value" id="story-red-score">0</div>
+            </div>
+          </div>
+
+          <div class="story-quote-block">
+            <div class="story-quote-title">
+              ข้อความที่ตรงกับคุณมากที่สุดตอนนี้
+            </div>
+            <div class="story-quote-text" id="story-quote-text">
+              ตัวอย่างคำคมจากผลลัพธ์จริง
+            </div>
+          </div>
+
+          <div class="story-footer">
+            <div class="story-footer-left">
+              Green Flag / Red Flag Personality Test
+            </div>
+            <div class="story-footer-right">
+              บันทึกไว้ใช้ทบทวนตัวเองได้เสมอ
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- External libraries -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <!-- Data + Logic -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
