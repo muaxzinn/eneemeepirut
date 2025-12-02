@@ -891,4 +891,9 @@
       transform: scale(0.45);
     }
   }
+
+  /* ใช้ตอนกำลังจับภาพ story ให้ได้ขนาดเต็ม 1080x1920 */
+  body.story-capturing #story-capture {
+    transform: none !important;
+  }
   
