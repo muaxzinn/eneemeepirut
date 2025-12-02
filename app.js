@@ -339,9 +339,14 @@ function downloadStoryImage() {
 
   window.scrollTo(0, 0);
 
+  // เปิดโหมดจับภาพ เพื่อบังคับไม่ให้ย่อ scale ของ story-capture
+  document.body.classList.add("story-capturing");
+
   html2canvas(target, {
     backgroundColor: null,
-    scale: 1,
+    scale: 1,          // ให้ตรงกับขนาด CSS (1080x1920)
+    width: 1080,
+    height: 1920,
     useCORS: true
   })
     .then((canvas) => {
@@ -355,6 +360,9 @@ function downloadStoryImage() {
     })
     .catch((error) => {
       console.error("เกิดข้อผิดพลาดในการสร้างภาพ IG Story", error);
+    })
+    .finally(() => {
+      document.body.classList.remove("story-capturing");
     });
 }
 
